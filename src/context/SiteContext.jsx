@@ -1,0 +1,195 @@
+import { createContext, useContext, useState, useEffect } from "react";
+
+const defaultSettings = {
+  navLayout: 1,
+  footerLayout: 1,
+  colors: {
+    navy: "#1a2744",
+    gold: "#c8a951",
+  },
+  images: {
+    introHero: { url: "", position: "center", brightness: 0.6 },
+    fishingHero: { url: "", position: "bottom", brightness: 0.55 },
+    sightseeingHero: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186237/Looking_out_to_Casco_Bay_1_w6bxca.jpg",
+      position: "center",
+      brightness: 0.55,
+    },
+    galleryHero: { url: "", position: "center", brightness: 0.55 },
+    contactHero: { url: "", position: "center", brightness: 0.55 },
+    fishPhoto: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774104836/Sunrise_over_Whaleboat_Isl._on_the_Solstice_ssn28a.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    fishingPhoto1: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774183965/Fish_and_Yellow_Fly_rqjctw.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    fishingPhoto2: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774184018/RPL_s_Fish_v9fa3c.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    fishingPhoto3: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774185692/IMG_0244_r63ne4.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    fishingFullPhoto: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774184660/Fish_On_South_Freeport_tvicd9.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    guidePhoto: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182787/35__Fish_6_8_23_sl6uqn.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    boatPhoto: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182806/IMG_3798_1_xqvnhe.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    sightseeingPhoto1: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186298/Rocky_Shoreline_qubuvz.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    sightseeingPhoto2: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186332/Osprey_Nest_rhwk1f.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    sightseeingPhoto3: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186349/Early_Fall_Great_time_to_Fish_pd2gfk.jpg",
+      position: "center",
+      brightness: 1,
+    },
+  },
+  content: {
+    heroQuote:
+      '"Rock-bound coastline. Savage takes. Memories that last a lifetime."',
+    heroTagline: "Casco Bay · South Freeport, Maine",
+    aboutTitle:
+      "Come to the rocky shores, islands, and inlets of Casco Bay, Maine",
+    aboutBody:
+      "A wild, burly fish that may have migrated from the Hudson, Delaware, and points south, stripers arrive when the lilacs bloom and depart as autumn leaves fall.",
+    fishingTitle: "How a Trip Unfolds",
+    fishingBody:
+      "We depart at early dawn from Strouts Point Wharf Company. Depending on that day's tide, we may begin fishing in South Freeport Harbor.",
+    sightTitle: "Discover Casco Bay",
+    sightBody:
+      "Not everyone fly fishes — and that's perfectly fine. Join us for a few hours on the water to experience the beauty of Casco Bay.",
+    contactPhone: "207-522-7366",
+    contactEmail: "flyrod@tidewaterflyoutfitters.com",
+    rate1Price: "$500",
+    rate1Duration: "4 Hours",
+    rate2Price: "$300",
+    rate2Duration: "3 Hours",
+  },
+};
+
+const SiteContext = createContext(null);
+
+export function SiteProvider({ children }) {
+  const [settings, setSettings] = useState(() => {
+    try {
+      const saved = localStorage.getItem("tw_settings");
+      if (!saved) return defaultSettings;
+      const parsed = JSON.parse(saved);
+      return {
+        ...defaultSettings,
+        ...parsed,
+        images: { ...defaultSettings.images, ...parsed.images },
+        content: { ...defaultSettings.content, ...parsed.content },
+      };
+    } catch {
+      return defaultSettings;
+    }
+  });
+
+  const [isAdmin, setIsAdmin] = useState(() => {
+    try {
+      return sessionStorage.getItem("tw_admin") === "1";
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("tw_settings", JSON.stringify(settings));
+    } catch {}
+  }, [settings]);
+
+  const updateSetting = (key, value) =>
+    setSettings((prev) => ({ ...prev, [key]: value }));
+
+  const updateContent = (key, value) =>
+    setSettings((prev) => ({
+      ...prev,
+      content: { ...prev.content, [key]: value },
+    }));
+
+  const updateImage = (key, field, value) =>
+    setSettings((prev) => ({
+      ...prev,
+      images: {
+        ...prev.images,
+        [key]: { ...prev.images[key], [field]: value },
+      },
+    }));
+
+  const updateColor = (key, value) =>
+    setSettings((prev) => ({
+      ...prev,
+      colors: { ...prev.colors, [key]: value },
+    }));
+
+  const resetSettings = () => {
+    setSettings(defaultSettings);
+    try {
+      localStorage.removeItem("tw_settings");
+    } catch {}
+  };
+
+  const adminLogin = () => {
+    setIsAdmin(true);
+    try {
+      sessionStorage.setItem("tw_admin", "1");
+    } catch {}
+  };
+
+  const adminLogout = () => {
+    setIsAdmin(false);
+    try {
+      sessionStorage.removeItem("tw_admin");
+    } catch {}
+  };
+
+  return (
+    <SiteContext.Provider
+      value={{
+        settings,
+        isAdmin,
+        updateSetting,
+        updateContent,
+        updateImage,
+        updateColor,
+        resetSettings,
+        adminLogin,
+        adminLogout,
+      }}
+    >
+      {children}
+    </SiteContext.Provider>
+  );
+}
+
+export function useSite() {
+  const ctx = useContext(SiteContext);
+  if (!ctx) throw new Error("useSite must be used within a SiteProvider");
+  return ctx;
+}

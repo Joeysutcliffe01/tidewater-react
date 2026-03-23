@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #1a2744;
+    --navy2: #243358;
+    --navy3: #0d1525;
+    --gold: #cecb3e;
+    --gold2: #e2c47a;
+    --white: #ffffff;
+    --offwhite: #f4f6f9;
+    --text-light: #d4dce8;
+    --text-muted: #8a9ab5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #fff;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}

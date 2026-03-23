@@ -1,0 +1,55 @@
+.wrap {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 8000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.btn {
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--navy2);
+}
+
+.active {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.active:hover {
+    background: var(--gold2);
+}
+
+.logout {
+    background: none;
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    color: #e74c3c;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logout:hover {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+}

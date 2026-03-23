@@ -1,0 +1,120 @@
+.main {
+    padding-top: 64px;
+}
+
+/* ── HERO ── */
+.hero {
+    position: relative;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.heroBg {
+    position: absolute;
+    inset: 0;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
+
+.heroBox {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 1.5rem 3rem;
+    display: inline-block;
+}
+
+.heroTitle {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-style: italic;
+    color: var(--white);
+    font-family: Georgia, serif;
+    font-weight: normal;
+}
+
+/* ── LIGHT BAND ── */
+.band {
+    background: #dde3ec;
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.bandText {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.85;
+    max-width: 620px;
+    margin: 0 auto 0.75rem;
+    font-family: Georgia, serif;
+}
+
+/* ── 3 PHOTO GRID ── */
+.photoGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+.photoPh {
+    height: 280px;
+    background: var(--navy2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.photoPh span {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* ── FULL WIDTH PANORAMA ── */
+.fullPhoto {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.fullPhotoPh {
+    width: 100%;
+    height: 100%;
+    background: var(--navy2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullPhotoPh span {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+    .photoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .photoPh {
+        height: 220px;
+    }
+
+    .fullPhoto {
+        height: 280px;
+    }
+}
