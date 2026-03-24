@@ -46,28 +46,33 @@
 }
 
 .bandText {
-    font-size: 15px;
+    font-size: 1.2em;
     color: #333;
     line-height: 1.85;
-    max-width: 620px;
+    max-width: 1220px;
     margin: 0 auto 0.75rem;
     font-family: Georgia, serif;
 }
 
 /* ── 3 PHOTO GRID ── */
 .photoGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     gap: 0;
+    background: #dde3ec;
+    padding: 3rem 1rem;
 }
 
 .photoPh {
-    height: 280px;
+    height: 520px;
+    width: 580px;
     background: var(--navy2);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0);
+    /* margin: 1rem; */
 }
 
 .photoPh span {

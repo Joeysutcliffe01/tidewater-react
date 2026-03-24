@@ -44,15 +44,20 @@ export default function Sightseeing() {
       {/* ── LIGHT BAND ── */}
       <section className={styles.band}>
         <p className={styles.bandText}>
-          Not everyone fly fishes — and that's perfectly fine. Join us for a few
-          hours on the water to experience the beauty of Casco Bay. Bring your
-          camera or sketch pad.
+          Not everyone fly fishes — and that’s perfectly fine. Join us for a few
+          hours on the water to experience the beauty
         </p>
         <p className={styles.bandText}>
-          You may see ospreys, bald eagles, seals, great blue herons, and
-          countless shorebirds. The rugged shoreline and protective islands —
-          some inhabited, some wild and rock-bound — are rich with history and
-          character. Let Captain Lane be your local guide.
+          of Casco Bay. Bring your camera or sketch pad. You may see ospreys,
+          bald eagles, seals, great blue herons,
+        </p>
+        <p className={styles.bandText}>
+          and countless shorebirds. The rugged shoreline and protective islands
+          — some inhabited, some wild and rock-bound —
+        </p>
+        <p className={styles.bandText}>
+          are rich with history and character. Let Captain Lane be your local
+          guide.
         </p>
       </section>
 
