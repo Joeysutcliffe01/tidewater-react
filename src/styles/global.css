@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'MinionPro';
+    src: url('../assets/fonts/MinionPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +16,7 @@
     --navy: #1a2744;
     --navy2: #243358;
     --navy3: #0d1525;
-    --gold: #cecb3e;
+    --gold: #c8a951;
     --gold2: #e2c47a;
     --white: #ffffff;
     --offwhite: #f4f6f9;
@@ -21,7 +29,7 @@ html {
 }
 
 body {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: 'MinionPro', Georgia, 'Times New Roman', serif;
     background: #fff;
     color: #1a1a1a;
     overflow-x: hidden;

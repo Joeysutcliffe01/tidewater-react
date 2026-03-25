@@ -9,14 +9,22 @@ const defaultSettings = {
   },
   images: {
     introHero: { url: "", position: "center", brightness: 0.6 },
-    fishingHero: { url: "", position: "bottom", brightness: 0.55 },
+    fishingHero: { url: "", position: "center 75%", brightness: 0.55 },
     sightseeingHero: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186237/Looking_out_to_Casco_Bay_1_w6bxca.jpg",
       position: "center",
       brightness: 0.55,
     },
-    galleryHero: { url: "", position: "center", brightness: 0.55 },
-    contactHero: { url: "", position: "center", brightness: 0.55 },
+    galleryHero: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774426355/Rocky_Coast_of_Maine_1_eqplha.jpg",
+      position: "center",
+      brightness: 0.55,
+    },
+    contactHero: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182787/35__Fish_6_8_23_sl6uqn.jpg",
+      position: "center 75%",
+      brightness: 0.65,
+    },
     fishPhoto: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774104836/Sunrise_over_Whaleboat_Isl._on_the_Solstice_ssn28a.jpg",
       position: "center",
@@ -64,6 +72,51 @@ const defaultSettings = {
     },
     sightseeingPhoto3: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186349/Early_Fall_Great_time_to_Fish_pd2gfk.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto1: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774427992/Bent_Rod_with_fish_on_1_l60ezn.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto2: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774183965/Fish_and_Yellow_Fly_rqjctw.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto3: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428066/IMG_1813_1_zu1yo0.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto4: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428104/Go_Get_Bigger_1_saw6yx.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto5: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774427953/Rocky_Coast_of_Maine_1_gnslh0.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto6: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428148/Pound_of_Tea_Island_1_badirl.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto7: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428207/Crab_Island_Ledge_1_pxeb2n.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto8: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428261/Frame-27-01-2026-03-54-38_1_hsgzdr.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    galleryPhoto9: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428307/Deer_Swimming_Between_Islands_5.03.50_PM_1_gcpyga.png",
       position: "center",
       brightness: 1,
     },

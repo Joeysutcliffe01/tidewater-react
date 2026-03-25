@@ -54,28 +54,20 @@
     text-align: center;
 }
 
+/* ── LOGO ── */
 .logoWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    margin-left: 9rem;
+    margin-bottom: -11rem;
 }
 
-.logoName {
-    font-family: Arial, sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-}
-
-.logoSub {
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-top: 2px;
+.logoImg {
+    width: 620px;
+    max-width: 100%;
+    display: block;
 }
 
 .logoLocation {
@@ -84,9 +76,10 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-top: 4px;
+    margin-top: -0.5rem;
 }
 
+/* ── RATES ── */
 .rates {
     display: flex;
     flex-direction: column;
@@ -111,6 +104,7 @@
     margin-top: 0.25rem;
 }
 
+/* ── CONTACT INFO ── */
 .contactInfo {
     display: flex;
     flex-direction: column;
@@ -140,6 +134,7 @@
     color: var(--gold);
 }
 
+/* ── GOLD DIVIDER ── */
 .divider {
     width: 100%;
     max-width: 700px;

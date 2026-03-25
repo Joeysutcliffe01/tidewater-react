@@ -1,35 +1,89 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Gallery.module.css";
 
-const defaultPhotos = [
-  { id: 1, cat: "fishing", label: "Fly rod bent double" },
-  { id: 2, cat: "fishing", label: "Striper at surface" },
-  { id: 3, cat: "fishing", label: "Sunset lobster boat" },
-  { id: 4, cat: "fishing", label: "Striper release" },
-  { id: 5, cat: "landscape", label: "Rocky island shoreline" },
-  { id: 6, cat: "landscape", label: "Island house in fog" },
-  { id: 7, cat: "fishing", label: "Bay at low tide" },
-  { id: 8, cat: "landscape", label: "Rocky shore walk" },
-  { id: 9, cat: "wildlife", label: "Seal swimming" },
-];
-
-const filters = [
-  { key: "all", label: "All" },
-  { key: "fishing", label: "Fishing" },
-  { key: "landscape", label: "Landscapes" },
-  { key: "wildlife", label: "Wildlife" },
+const PHOTO_LABELS = [
+  "Bent rod, fish on",
+  "Fish and yellow fly",
+  "On the water",
+  "Go get bigger",
+  "Rocky coast of Maine",
+  "Pound of Tea Island",
+  "Crab Island Ledge",
+  "Dawn on the bay",
+  "Deer swimming between islands",
 ];
 
 export default function Gallery() {
   const { settings } = useSite();
+  const [lightboxIdx, setLightboxIdx] = useState(null); // null = closed
+  const [animDir, setAnimDir] = useState(null); // 'left' | 'right' | null
+  const [animating, setAnimating] = useState(false);
+
   const galleryHero = settings.images?.galleryHero ?? {
     url: "",
     position: "center",
     brightness: 0.55,
   };
-  const [active, setActive] = useState("all");
 
+  const photos = PHOTO_LABELS.map((label, i) => {
+    const key = `galleryPhoto${i + 1}`;
+    const photo = settings.images?.[key] ?? {
+      url: "",
+      position: "center",
+      brightness: 1,
+    };
+    return { key, label, photo };
+  });
+
+  // Only photos with a URL participate in the lightbox
+  const visiblePhotos = photos.filter((p) => p.photo.url);
+
+  // ── Lightbox navigation ──────────────────────────────────────────────
+  const navigate = useCallback(
+    (dir) => {
+      if (animating || lightboxIdx === null) return;
+      const next =
+        (lightboxIdx + dir + visiblePhotos.length) % visiblePhotos.length;
+      setAnimDir(dir === 1 ? "left" : "right");
+      setAnimating(true);
+      setTimeout(() => {
+        setLightboxIdx(next);
+        setAnimDir(null);
+        setAnimating(false);
+      }, 320);
+    },
+    [animating, lightboxIdx, visiblePhotos.length],
+  );
+
+  const openLightbox = (idx) => {
+    setLightboxIdx(idx);
+    setAnimDir(null);
+  };
+
+  const closeLightbox = () => setLightboxIdx(null);
+
+  // Keyboard nav
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") navigate(1);
+      if (e.key === "ArrowLeft") navigate(-1);
+      if (e.key === "Escape") closeLightbox();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIdx, navigate]);
+
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = lightboxIdx !== null ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [lightboxIdx]);
+
+  // ── Derived styles ───────────────────────────────────────────────────
   const heroBgStyle = {
     position: "absolute",
     inset: 0,
@@ -40,10 +94,15 @@ export default function Gallery() {
     filter: `brightness(${galleryHero.brightness})`,
   };
 
-  const filtered =
-    active === "all"
-      ? defaultPhotos
-      : defaultPhotos.filter((p) => p.cat === active);
+  const currentPhoto = lightboxIdx !== null ? visiblePhotos[lightboxIdx] : null;
+
+  const lbImgClass = [
+    styles.lbImg,
+    animDir === "left" ? styles.lbSlideLeft : "",
+    animDir === "right" ? styles.lbSlideRight : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <main className={styles.main}>
@@ -57,34 +116,106 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ── GALLERY ── */}
-      <section className={styles.gallery}>
-        <div className={styles.filters}>
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              className={
-                active === f.key
-                  ? `${styles.filterBtn} ${styles.filterActive}`
-                  : styles.filterBtn
+      {/* ── PHOTO GRID ── */}
+      <section className={styles.grid}>
+        {photos.map(({ key, label, photo }) => {
+          const visIdx = visiblePhotos.findIndex((p) => p.key === key);
+          const cellStyle = {
+            backgroundImage: photo.url ? `url('${photo.url}')` : "none",
+            backgroundSize: "cover",
+            backgroundPosition: photo.position,
+            backgroundRepeat: "no-repeat",
+            filter: `brightness(${photo.brightness})`,
+            cursor: photo.url ? "pointer" : "default",
+          };
+          return (
+            <div
+              key={key}
+              className={styles.cell}
+              style={cellStyle}
+              onClick={() => photo.url && openLightbox(visIdx)}
+              role={photo.url ? "button" : undefined}
+              aria-label={photo.url ? `View ${label}` : undefined}
+              tabIndex={photo.url ? 0 : undefined}
+              onKeyDown={
+                photo.url
+                  ? (e) => e.key === "Enter" && openLightbox(visIdx)
+                  : undefined
               }
-              onClick={() => setActive(f.key)}
             >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        <div className={styles.grid}>
-          {filtered.map((photo) => (
-            <div key={photo.id} className={styles.gridItem}>
-              <div className={styles.photoPh}>
-                <span>{photo.label}</span>
-              </div>
+              {!photo.url && (
+                <span className={styles.placeholder}>{label}</span>
+              )}
+              {photo.url && <div className={styles.cellOverlay} />}
             </div>
-          ))}
-        </div>
+          );
+        })}
       </section>
+
+      {/* ── LIGHTBOX ── */}
+      {lightboxIdx !== null && currentPhoto && (
+        <div
+          className={styles.lbBackdrop}
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* Close */}
+          <button
+            className={styles.lbClose}
+            onClick={closeLightbox}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          {/* Counter */}
+          <div className={styles.lbCounter}>
+            {lightboxIdx + 1} / {visiblePhotos.length}
+          </div>
+
+          {/* Prev arrow */}
+          <button
+            className={`${styles.lbArrow} ${styles.lbPrev}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(-1);
+            }}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+
+          {/* Image — key prop forces remount so animation re-fires each slide */}
+          <div
+            className={styles.lbImgWrap}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              key={currentPhoto.key}
+              className={lbImgClass}
+              src={currentPhoto.photo.url}
+              alt={currentPhoto.label}
+              draggable={false}
+            />
+          </div>
+
+          {/* Next arrow */}
+          <button
+            className={`${styles.lbArrow} ${styles.lbNext}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(1);
+            }}
+            aria-label="Next"
+          >
+            ›
+          </button>
+
+          {/* Caption */}
+          <p className={styles.lbCaption}>{currentPhoto.label}</p>
+        </div>
+      )}
     </main>
   );
 }

@@ -1,7 +1,7 @@
 .footer {
-    background: var(--navy3);
-    border-top: 1px solid rgba(200, 169, 81, 0.15);
-    padding: 2.5rem 2rem 1.5rem;
+    background: #ffffff;
+    border-top: 1px solid rgba(26, 39, 68, 0.1);
+    padding: 2rem 2rem 1.25rem;
 }
 
 .inner {
@@ -11,44 +11,24 @@
     grid-template-columns: 1fr 2fr 1fr;
     gap: 2rem;
     align-items: center;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(200, 169, 81, 0.1);
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(26, 39, 68, 0.08);
 }
 
-/* LOGO */
+/* ── LEFT — LOGO ── */
 .logoCol {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.logoName {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
+.logoImg {
+    width: 240px;
+    height: auto;
+    display: block;
 }
 
-.logoSub {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 2px;
-}
-
-.logoLocation {
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-
-/* LEGAL */
+/* ── CENTER — LEGAL ── */
 .legalCol {
     text-align: center;
 }
@@ -56,48 +36,43 @@
 .legal {
     font-family: Arial, sans-serif;
     font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.7;
+    color: #444;
+    line-height: 1.8;
+    font-style: italic;
 }
 
 .legal a {
-    color: var(--gold);
+    color: var(--navy);
     text-decoration: none;
 }
 
 .legal a:hover {
-    color: var(--gold2);
+    color: var(--gold);
 }
 
-/* BADGE */
+/* ── RIGHT — BADGE ── */
 .badgeCol {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
-.badge {
-    display: inline-block;
-    border: 1px solid rgba(200, 169, 81, 0.3);
-    padding: 8px 14px;
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.6;
+.badgeImg {
+    width: 72px;
+    height: auto;
 }
 
-/* COPYRIGHT */
+/* ── COPYRIGHT ── */
 .copy {
     max-width: 1060px;
     margin: 1rem auto 0;
     font-family: Arial, sans-serif;
     font-size: 10px;
-    color: #2e3f5a;
+    color: #aaa;
     text-align: center;
 }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 700px) {
     .inner {
         grid-template-columns: 1fr;
@@ -105,7 +80,7 @@
     }
 
     .logoCol {
-        align-items: center;
+        justify-content: center;
     }
 
     .badgeCol {

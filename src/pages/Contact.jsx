@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Contact.module.css";
+import logoFull from "../assets/svg/TIDE-001 TIDEWATER LOGO  (1).svg";
 
 export default function Contact() {
   const { settings } = useSite();
@@ -12,7 +13,12 @@ export default function Contact() {
     rate2Price,
     rate2Duration,
   } = settings.content;
-  const contactHero = settings.images.contactHero;
+
+  const contactHero = settings.images?.contactHero ?? {
+    url: "",
+    position: "center",
+    brightness: 0.65,
+  };
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -42,7 +48,7 @@ export default function Contact() {
         <div className={styles.heroBg} style={heroBgStyle} />
         <div className={styles.heroContent}>
           <div className={styles.heroBox}>
-            <p className={styles.heroTitle}>Contact</p>
+            <p className={styles.heroTitle}>Contact & Rates</p>
           </div>
         </div>
       </section>
@@ -50,20 +56,23 @@ export default function Contact() {
       {/* ── RATES + LOGO SECTION ── */}
       <section className={styles.ratesSection}>
         <div className={styles.ratesInner}>
-          {/* LOGO */}
+          {/* LOGO IMAGE */}
           <div className={styles.logoWrap}>
-            <div className={styles.logoName}>Tidewater</div>
-            <div className={styles.logoSub}>Fly Outfitters</div>
-            <div className={styles.logoLocation}>South Freeport · Maine</div>
+            <img
+              src={logoFull}
+              alt="Tidewater Fly Outfitters"
+              className={styles.logoImg}
+            />
+            {/* <div className={styles.logoLocation}>South Freeport · Maine</div> */}
           </div>
 
           {/* RATES */}
           <div className={styles.rates}>
             <p className={styles.rateRow}>
-              <strong>Fishing:</strong> {rate1Duration} {rate1Price}
+              <strong>Fishing:</strong> {rate1Duration} — {rate1Price}
             </p>
             <p className={styles.rateRow}>
-              <strong>Sightseeing:</strong> {rate2Duration} {rate2Price}
+              <strong>Sightseeing:</strong> {rate2Duration} — {rate2Price}
             </p>
             <p className={styles.rateNote}>
               <em>Call for rates for trips of shorter duration.</em>
@@ -96,8 +105,8 @@ export default function Contact() {
         <div className={styles.divider} />
       </section>
 
-      {/* ── CONTACT FORM ── */}
-      <section className={styles.formSection}>
+      {/* ── CONTACT FORM — hidden for now, re-enable when ready ── */}
+      {/* <section className={styles.formSection}>
         <div className={styles.formInner}>
           <h2 className={styles.formTitle}>Send a Message</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -134,12 +143,8 @@ export default function Contact() {
                 <label className={styles.label}>Trip Type</label>
                 <select className={styles.input}>
                   <option value="">Select…</option>
-                  <option>
-                    Fly Fishing — {rate1Price} / {rate1Duration}
-                  </option>
-                  <option>
-                    Sightseeing — {rate2Price} / {rate2Duration}
-                  </option>
+                  <option>Fly Fishing — {rate1Price} / {rate1Duration}</option>
+                  <option>Sightseeing — {rate2Price} / {rate2Duration}</option>
                   <option>Other / Questions</option>
                 </select>
               </div>
@@ -169,7 +174,7 @@ export default function Contact() {
             )}
           </form>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

@@ -9,6 +9,7 @@ export default function Sightseeing() {
     sightseeingPhoto1,
     sightseeingPhoto2,
     sightseeingPhoto3,
+    bayPanorama,
   } = settings.images;
 
   const heroBgStyle = {
@@ -76,8 +77,17 @@ export default function Sightseeing() {
 
       {/* ── FULL WIDTH PANORAMA ── */}
       <section className={styles.fullPhoto}>
-        <div className={styles.fullPhotoPh}>
-          <span>Bay panorama — full width</span>
+        <div
+          className={styles.fullPhotoPh}
+          style={{
+            backgroundImage: bayPanorama.url
+              ? `url('${bayPanorama.url}')`
+              : "none",
+            backgroundSize: "cover",
+            backgroundPosition: bayPanorama.position,
+          }}
+        >
+          {!bayPanorama.url && <span>Bay panorama — full width</span>}
         </div>
       </section>
     </main>

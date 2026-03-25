@@ -5,7 +5,7 @@
 /* ── HERO ── */
 .hero {
     position: relative;
-    height: 420px;
+    height: 620px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +62,7 @@
 }
 
 .photoPh {
-    height: 260px;
+    height: 410px;
     background: var(--navy2);
     display: flex;
     align-items: center;

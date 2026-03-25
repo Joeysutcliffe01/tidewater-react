@@ -104,7 +104,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    height: 380px;
+    height: 580px;
     background-color: var(--navy);
 }
 
@@ -113,6 +113,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    object-fit: contain;
     /* border: 1px solid rgba(255, 255, 255, 0); */
     margin: 4rem 1.5rem 0rem 1.5rem;
 }
