@@ -1,7 +1,7 @@
 import { useSite } from "../../context/SiteContext";
 import styles from "./FooterLayout1.module.css";
-import logoFull from "../../assets/svg/TIDE-001 TIDEWATER LOGO  (1).svg";
-import maineBadge from "../../assets/svg/maine-guide.svg";
+import logoFull from "../../assets/svg/TIDE-001-TIDEWATER-LOGO.png";
+import maineBadge from "../../assets/svg/registered-maine-guide.webp";
 
 export default function FooterLayout1() {
   const { settings } = useSite();

@@ -5,7 +5,7 @@
 /* ── HERO ── */
 .hero {
     position: relative;
-    height: 420px;
+    height: 620px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,11 +31,11 @@
 }
 
 .heroTitle {
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-style: italic;
+    font-size: clamp(4rem, 3.5vw, 2.8rem);
     color: var(--white);
-    font-family: Georgia, serif;
+    font-family: 'MinionPro', Georgia, serif;
     font-weight: normal;
+    letter-spacing: 6px;
 }
 
 /* ── LIGHT BAND ── */

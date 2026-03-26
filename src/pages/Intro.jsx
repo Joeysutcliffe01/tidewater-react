@@ -1,5 +1,7 @@
 import { useSite } from "../context/SiteContext";
 import styles from "./Intro.module.css";
+import flyLine from "../assets/svg/TIDE-001 TIDEWATER LOGO Line only  (1).svg";
+import fishMark from "../assets/svg/TIDE-001 TIDEWATER LOGO Reverse NO TYPE  (1).svg";
 
 export default function Intro() {
   const { settings } = useSite();
@@ -24,6 +26,13 @@ export default function Intro() {
           }
         />
         <div className={styles.heroContent}>
+          {/* Fish mark — top right of the box, matching PDF */}
+          <img
+            src={fishMark}
+            alt=""
+            className={styles.heroFishMark}
+            aria-hidden="true"
+          />
           <div className={styles.heroBox}>
             <p className={styles.heroQuote}>{heroQuote}</p>
           </div>
@@ -33,14 +42,17 @@ export default function Intro() {
       {/* ── LIGHT BAND ── */}
       <section className={styles.band}>
         <p className={styles.bandText}>
-          It's the oversized tail of the striped bass that gives the fish its
-          rod-bending power. Even a "schoolie" striper can turn a drifting boat
-          90 degrees: bigger fish will "pull" it outright.
+          It’s the oversized tail of the striped bass that gives the fish its
+          rod-bending power.
         </p>
         <p className={styles.bandText}>
-          A striper's take — whether on the surface or deep — is aggressive and
-          unmistakable. There's never a doubt when you're tight with a striped
-          bass.
+          Even a “schoolie” striper can turn a drifting boat 90 degrees: bigger
+          fish will “pull” it outright.” A striper’s take – whether on the
+          surface or
+        </p>
+        <p className={styles.bandText}>
+          deep – is aggressive and unmistakable. There’s never a doubt when
+          you’re tight with a striped bass.
         </p>
       </section>
 
@@ -64,7 +76,14 @@ export default function Intro() {
           Come to the rocky shores, islands, and inlets of Casco Bay, Maine in
           pursuit of the premier gamefish of the East Coast.
         </p>
-        <p className={styles.aboutPara}>{aboutBody}</p>
+        <p className={styles.aboutPara}>
+          A wild, burly fish that may have migrated from the Hudson, Delaware,
+          and points south, stripers arrive when the lilacs bloom and depart as
+        </p>
+        <p className={styles.aboutPara}>
+          autumn leaves fall. Catching one on a fly in the beauty of Casco Bay
+          is a thrill that stays with you.
+        </p>
       </section>
 
       {/* ── PHOTO PAIR ── */}
@@ -112,12 +131,21 @@ export default function Intro() {
             more than 25 years targeting striped bass on the fly in Casco Bay.
           </p>
           <p className={styles.aboutNavyText}>
-            His passion and local knowledge are what put clients on fish. You'll
+            His passion and local knowledge are what put clients on fish. You’ll
             fish from a 2024 Jones Brothers Cape Fisherman, a 20-foot platform
+          </p>
+          <p className={styles.aboutNavyText}>
             designed for fly-fishing and perfectly suited for both skinny water
             and the open bay.
           </p>
         </div>
+        {/* Decorative fly line — bottom right, matches PDF */}
+        <img
+          src={flyLine}
+          alt=""
+          className={styles.flyLine}
+          aria-hidden="true"
+        />
       </section>
     </main>
   );

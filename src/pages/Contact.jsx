@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Contact.module.css";
-import logoFull from "../assets/svg/TIDE-001 TIDEWATER LOGO  (1).svg";
+import logoFull from "../assets/svg/TIDE-001-TIDEWATER-LOGO.png";
 
 export default function Contact() {
   const { settings } = useSite();
@@ -16,7 +16,7 @@ export default function Contact() {
 
   const contactHero = settings.images?.contactHero ?? {
     url: "",
-    position: "center",
+    position: "center 40%",
     brightness: 0.65,
   };
 

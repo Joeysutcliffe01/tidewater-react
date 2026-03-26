@@ -31,11 +31,11 @@
 }
 
 .heroTitle {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-style: italic;
+    font-size: clamp(4rem, 3.5vw, 2.8rem);
     color: var(--white);
-    font-family: Georgia, serif;
+    font-family: 'MinionPro', Georgia, serif;
     font-weight: normal;
+    letter-spacing: 6px;
 }
 
 /* ── PHOTO GRID ── */

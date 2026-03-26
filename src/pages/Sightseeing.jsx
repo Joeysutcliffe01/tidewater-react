@@ -4,13 +4,32 @@ import styles from "./Sightseeing.module.css";
 export default function Sightseeing() {
   const { settings } = useSite();
   const { sightTitle, sightBody } = settings.content;
-  const {
-    sightseeingHero,
-    sightseeingPhoto1,
-    sightseeingPhoto2,
-    sightseeingPhoto3,
-    bayPanorama,
-  } = settings.images;
+
+  const sightseeingHero = settings.images?.sightseeingHero ?? {
+    url: "",
+    position: "center",
+    brightness: 0.55,
+  };
+  const sightseeingPhoto1 = settings.images?.sightseeingPhoto1 ?? {
+    url: "",
+    position: "center",
+    brightness: 1,
+  };
+  const sightseeingPhoto2 = settings.images?.sightseeingPhoto2 ?? {
+    url: "",
+    position: "center",
+    brightness: 1,
+  };
+  const sightseeingPhoto3 = settings.images?.sightseeingPhoto3 ?? {
+    url: "",
+    position: "center",
+    brightness: 1,
+  };
+  const bayPanorama = settings.images?.bayPanorama ?? {
+    url: "",
+    position: "center",
+    brightness: 1,
+  };
 
   const heroBgStyle = {
     position: "absolute",

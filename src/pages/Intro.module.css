@@ -20,49 +20,77 @@
     filter: brightness(0.6);
 }
 
+/* Update existing .heroContent to add position: relative */
 .heroContent {
     position: relative;
     z-index: 2;
-    text-align: center;
+    text-align: left;
     padding: 2rem;
-    max-width: 700px;
-    width: 100%;
+}
+
+.heroFishMark {
+    position: absolute;
+    top: -210px;
+    right: -120px;
+    width: 520px;
+    height: auto;
+    pointer-events: none;
 }
 
 .heroBox {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    padding: 2rem 2.5rem;
+    position: relative;
+    padding: 1.5rem 2rem;
     display: inline-block;
+    max-width: 800px;
+    text-align: center;
+    border: none;
+
+    /* Three sides only — no top-right corner */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+    /* Break the top-right corner with a gradient */
+    -webkit-mask-image: linear-gradient(to bottom left,
+            transparent 0px,
+            transparent 60px,
+            black 70px);
+    mask-image: linear-gradient(to bottom left,
+            transparent 0px,
+            transparent 60px,
+            black 60px);
 }
 
 .heroQuote {
-    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-    font-style: italic;
+    font-size: clamp(3.5rem, 3.5vw, 2.6rem);
+    /* font-style: italic; */
     color: var(--white);
     line-height: 1.3;
-    font-family: Georgia, serif;
+    font-family: 'MinionPro', Georgia, serif;
+    letter-spacing: 5px;
 }
 
 /* ── LIGHT BAND ── */
 .band {
-    background: #dde3ec;
+    background: #afdcf18b;
     padding: 3rem 2rem;
     text-align: center;
 }
 
 .bandText {
-    font-size: 15px;
+    font-size: 17px;
     color: #333;
-    line-height: 1.85;
-    max-width: 680px;
-    margin: 0 auto 0.75rem;
-    font-family: Georgia, serif;
+    line-height: 2;
+    max-width: 1000px;
+    margin: 0 auto 0.5rem;
+    font-family: 'MinionPro', Georgia, serif;
 }
 
 /* ── FULL WIDTH FISH PHOTO ── */
 .fishPhoto {
     width: 100%;
-    height: 420px;
+    height: 720px;
     overflow: hidden;
 }
 
@@ -91,10 +119,10 @@
 }
 
 .aboutPara {
-    font-size: 15px;
+    font-size: 17px;
     color: #333;
     line-height: 1.85;
-    max-width: 620px;
+    max-width: 1200px;
     margin: 0 auto 1rem;
     font-family: Georgia, serif;
 }
@@ -134,13 +162,13 @@
 }
 
 .aboutNavyInner {
-    max-width: 620px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .aboutLabel {
     font-family: Arial, sans-serif;
-    font-size: 10px;
+    font-size: 30px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--gold);
@@ -151,7 +179,7 @@
 }
 
 .aboutNavyText {
-    font-size: 14px;
+    font-size: 17px;
     color: var(--text-light);
     line-height: 1.85;
     margin-bottom: 1rem;
@@ -172,4 +200,28 @@
     .heroQuote {
         font-size: 1.4rem;
     }
+}
+
+/* Add this to the .aboutNavy block — make it position: relative first */
+
+.aboutNavy {
+    background: var(--navy);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    /* ← add this */
+    overflow: hidden;
+    /* ← add this so SVG clips at edge */
+}
+
+/* Decorative fly line SVG — bottom right corner */
+.flyLine {
+    position: absolute;
+    bottom: -52rem;
+    right: -20rem;
+    width: 1500px;
+    height: auto;
+    opacity: 0.9;
+    pointer-events: none;
+    transform: scaleX(-1);
 }

@@ -22,11 +22,11 @@ const defaultSettings = {
     },
     contactHero: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182787/35__Fish_6_8_23_sl6uqn.jpg",
-      position: "center 75%",
+      position: "center 70%",
       brightness: 0.65,
     },
     fishPhoto: {
-      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774104836/Sunrise_over_Whaleboat_Isl._on_the_Solstice_ssn28a.jpg",
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774181698/Husky_Striper_on_Green_Crab_Fly_f6ywde.png",
       position: "center",
       brightness: 1,
     },
@@ -72,6 +72,11 @@ const defaultSettings = {
     },
     sightseeingPhoto3: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186349/Early_Fall_Great_time_to_Fish_pd2gfk.jpg",
+      position: "center",
+      brightness: 1,
+    },
+    bayPanorama: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774426424/Fog_Bank_in_the_Distance_1_lwgjwe.jpg",
       position: "center",
       brightness: 1,
     },
@@ -126,12 +131,11 @@ const defaultSettings = {
       '"Rock-bound coastline. Savage takes. Memories that last a lifetime."',
     heroTagline: "Casco Bay · South Freeport, Maine",
     aboutTitle:
-      "Come to the rocky shores, islands, and inlets of Casco Bay, Maine",
+      "Come to the rocky shores, islands, and inlets of Casco Bay, Maine in pursuit of the premier gamefish of the East Coast.",
     aboutBody:
-      "A wild, burly fish that may have migrated from the Hudson, Delaware, and points south, stripers arrive when the lilacs bloom and depart as autumn leaves fall.",
+      "A wild, burly fish that may have migrated from the Hudson, Delaware, and points south, stripers arrive when the lilacs bloom and depart as ",
     fishingTitle: "How a Trip Unfolds",
-    fishingBody:
-      "We depart at early dawn from Strouts Point Wharf Company. Depending on that day's tide, we may begin fishing in South Freeport Harbor.",
+    fishingBody: "",
     sightTitle: "Discover Casco Bay",
     sightBody:
       "Not everyone fly fishes — and that's perfectly fine. Join us for a few hours on the water to experience the beauty of Casco Bay.",
