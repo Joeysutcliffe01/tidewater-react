@@ -1,0 +1,53 @@
+.main {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(10, 30, 60, 0.72), rgba(10, 30, 60, 0.72)),
+        url('https://res.cloudinary.com/dfujw9ted/image/upload/v1774186237/Looking_out_to_Casco_Bay_1_w6bxca.jpg') center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.heading {
+    font-family: 'MinionPro', Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: normal;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.sub {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn {
+    margin-top: 0.5rem;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: #fff;
+    padding: 12px 32px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+}

@@ -11,6 +11,7 @@ import Fishing from "./pages/Fishing";
 import Sightseeing from "./pages/Sightseeing";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 function AppInner() {
   const { isAdmin } = useSite();
@@ -25,7 +26,6 @@ function AppInner() {
         if (!isAdmin) setShowLogin(true);
       }
     }
-    // Small delay so hash is readable on mount
     setTimeout(checkHash, 100);
     window.addEventListener("hashchange", checkHash);
     return () => window.removeEventListener("hashchange", checkHash);
@@ -46,6 +46,7 @@ function AppInner() {
         <Route path="/sightseeing" element={<Sightseeing />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
