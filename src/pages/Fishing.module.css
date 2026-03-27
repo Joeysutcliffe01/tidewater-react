@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    /* removed overflow: hidden */
 }
 
 .heroBg {
@@ -24,18 +24,27 @@
     padding: 2rem;
 }
 
+/* Wrapper anchors the fly line to the box */
+.heroBoxWrap {
+    position: relative;
+    display: inline-block;
+}
+
 .flyLine {
     position: absolute;
-    bottom: -32.7rem;
-    right: 25rem;
-    width: 1200px;
+    top: -71px;
+    left: 55%;
+    transform: translateX(-60%) scaleX(-1);
+    width: 1250px;
     height: auto;
     opacity: 0.9;
     pointer-events: none;
-    transform: scaleX(-1);
+    z-index: 3;
 }
 
 .heroBox {
+    position: relative;
+    z-index: 3;
     border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 1.5rem 3rem;
     display: inline-block;

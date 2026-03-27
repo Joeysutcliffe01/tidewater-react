@@ -8,8 +8,8 @@ export default function Fishing() {
   const fallback = { url: "", position: "center", brightness: 1 };
   const fishingHero = settings.images?.fishingHero ?? {
     url: "",
-    position: "bottom",
-    brightness: 0.55,
+    position: "center 75%",
+    brightness: 0.8,
   };
   const fishingPhoto1 = settings.images?.fishingPhoto1 ?? fallback;
   const fishingPhoto2 = settings.images?.fishingPhoto2 ?? fallback;
@@ -39,7 +39,6 @@ export default function Fishing() {
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <div className={styles.heroBg} style={heroBgStyle} />
-        {/* Decorative fly line — matches PDF */}
         <img
           src={flyLine}
           alt=""
@@ -47,8 +46,10 @@ export default function Fishing() {
           aria-hidden="true"
         />
         <div className={styles.heroContent}>
-          <div className={styles.heroBox}>
-            <p className={styles.heroTitle}>Fishing</p>
+          <div className={styles.heroBoxWrap}>
+            <div className={styles.heroBox}>
+              <p className={styles.heroTitle}>Fishing</p>
+            </div>
           </div>
         </div>
       </section>
@@ -57,10 +58,8 @@ export default function Fishing() {
       <section className={styles.band}>
         <p className={styles.bandText}>
           We depart at early dawn from Strouts Point Wharf Company. Depending on
-          that day’s tide, we may begin fishing in
-        </p>
-        <p className={styles.bandText}>
-          South Freeport Harbor….then move to proven spots around the bay
+          that day's tide, we may begin fishing in South Freeport Harbor….then
+          move to proven spots around the bay.
         </p>
       </section>
 
@@ -81,23 +80,17 @@ export default function Fishing() {
       <section className={styles.body}>
         <p className={styles.bodyText}>
           We fish locally made Maine Fly Company rods (8–10 weight) paired with
-          Orvis reels, rigged with fresh leaders and a variety of lines.
-        </p>
-        <p className={styles.bodyText}>
-          Flies are locally tied. You’re welcome to bring your own saltwater fly
-          gear.
+          Orvis reels, rigged with fresh leaders and a variety of lines. Flies
+          are locally tied. You're welcome to bring your own saltwater fly gear.
         </p>
         <p className={styles.bodyText}>
           We are strictly catch-and-release, pinch our barbs, and keep fish wet
           whenever possible to minimize impact.
         </p>
         <p className={styles.bodyText}>
-          The boat accommodates up to three anglers – fishing from the bow,
-          stern and one waiting on deck. We welcome all experience levels.
-        </p>
-        <p className={styles.bodyText}>
-          While the focus is on catching fish, every trip is low-pressure and
-          fun.
+          The boat accommodates up to three anglers — fishing from the bow,
+          stern and one waiting on deck. We welcome all experience levels. While
+          the focus is on catching fish, every trip is low-pressure and fun.
         </p>
       </section>
 

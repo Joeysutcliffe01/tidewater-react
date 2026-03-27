@@ -27,24 +27,26 @@
 }
 
 .logoName {
-    font-size: 25px;
+    font-size: 32px;
     letter-spacing: 0.08em;
     color: var(--white);
     text-transform: uppercase;
-    font-family: Arial, sans-serif;
+    font-family: "Nura Bold", Arial, sans-serif;
     font-weight: bold;
     text-align: center;
+    letter-spacing: 5px;
 }
 
 .logoSub {
-    font-size: 10px;
+    font-size: 15px;
     letter-spacing: 0.14em;
     color: var(--white);
     text-transform: uppercase;
-    font-family: Arial, sans-serif;
+    font-family: "Nura Bold", Arial, sans-serif;
     font-weight: 500;
     text-align: center;
     padding-top: 0.3rem;
+    letter-spacing: 3px;
 }
 
 /* LINKS */

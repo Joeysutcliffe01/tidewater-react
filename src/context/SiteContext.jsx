@@ -8,22 +8,30 @@ const defaultSettings = {
     gold: "#c8a951",
   },
   images: {
-    introHero: { url: "", position: "center", brightness: 0.6 },
-    fishingHero: { url: "", position: "center 75%", brightness: 0.55 },
+    introHero: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774104111/Fish_On_kylifh.jpg",
+      position: "center",
+      brightness: 0.8,
+    },
+    fishingHero: {
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774104836/Sunrise_over_Whaleboat_Isl._on_the_Solstice_ssn28a.jpg",
+      position: "center 75%",
+      brightness: 0.8,
+    },
     sightseeingHero: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774186237/Looking_out_to_Casco_Bay_1_w6bxca.jpg",
       position: "center",
-      brightness: 0.55,
+      brightness: 0.75,
     },
     galleryHero: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774426355/Rocky_Coast_of_Maine_1_eqplha.jpg",
-      position: "center",
-      brightness: 0.55,
+      position: "center 75%",
+      brightness: 0.75,
     },
     contactHero: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182787/35__Fish_6_8_23_sl6uqn.jpg",
       position: "center 70%",
-      brightness: 0.65,
+      brightness: 0.8,
     },
     fishPhoto: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774181698/Husky_Striper_on_Green_Crab_Fly_f6ywde.png",
@@ -133,7 +141,7 @@ const defaultSettings = {
     aboutTitle:
       "Come to the rocky shores, islands, and inlets of Casco Bay, Maine in pursuit of the premier gamefish of the East Coast.",
     aboutBody:
-      "A wild, burly fish that may have migrated from the Hudson, Delaware, and points south, stripers arrive when the lilacs bloom and depart as ",
+      "A wild, burly fish that may have migrated from the Hudson, Delaware, and points south, stripers arrive when the lilacs bloom and depart as autumn leaves fall.",
     fishingTitle: "How a Trip Unfolds",
     fishingBody: "",
     sightTitle: "Discover Casco Bay",
