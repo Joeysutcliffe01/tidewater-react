@@ -159,21 +159,12 @@ const defaultSettings = {
 const SiteContext = createContext(null);
 
 export function SiteProvider({ children }) {
-  const [settings, setSettings] = useState(() => {
-    try {
-      const saved = localStorage.getItem("tw_settings");
-      if (!saved) return defaultSettings;
-      const parsed = JSON.parse(saved);
-      return {
-        ...defaultSettings,
-        ...parsed,
-        images: { ...defaultSettings.images, ...parsed.images },
-        content: { ...defaultSettings.content, ...parsed.content },
-      };
-    } catch {
-      return defaultSettings;
-    }
-  });
+  // Clear localStorage on every load — temporary until MERN backend is ready
+  try {
+    localStorage.removeItem("tw_settings");
+  } catch {}
+
+  const [settings, setSettings] = useState(() => defaultSettings);
 
   const [isAdmin, setIsAdmin] = useState(() => {
     try {
