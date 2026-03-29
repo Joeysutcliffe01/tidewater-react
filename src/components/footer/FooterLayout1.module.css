@@ -88,3 +88,10 @@
         justify-content: center;
     }
 }
+
+@media (max-width: 1220px) {
+    .legal {
+
+        text-align: center;
+    }
+}

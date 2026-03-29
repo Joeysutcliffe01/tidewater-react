@@ -38,7 +38,7 @@
 }
 
 .logoSub {
-    font-size: 15px;
+    font-size: 17px;
     letter-spacing: 0.14em;
     color: var(--white);
     text-transform: uppercase;
@@ -100,7 +100,7 @@
 /* MOBILE MENU */
 .mobileMenu {
     position: fixed;
-    top: 64px;
+    top: 100px;
     left: 0;
     right: 0;
     background: var(--navy);
@@ -128,7 +128,7 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .links {
         display: none;
     }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Contact.module.css";
 import logoFull from "../assets/svg/TIDE-001-TIDEWATER-LOGO.png";
@@ -22,6 +22,21 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
 
+  // Responsive hero position: center right on mobile (≤611px), SiteContext value above
+  const [heroPosition, setHeroPosition] = useState(
+    window.innerWidth <= 611 ? "center right" : contactHero.position,
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHeroPosition(
+        window.innerWidth <= 611 ? "center right" : contactHero.position,
+      );
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [contactHero.position]);
+
   const heroBgStyle = {
     position: "absolute",
     inset: 0,
@@ -29,7 +44,7 @@ export default function Contact() {
       ? `url('${contactHero.url}')`
       : "linear-gradient(135deg, #1a2744 0%, #243358 100%)",
     backgroundSize: "cover",
-    backgroundPosition: contactHero.position,
+    backgroundPosition: heroPosition, // ← responsive value
     backgroundRepeat: "no-repeat",
     filter: `brightness(${contactHero.brightness})`,
   };
@@ -63,7 +78,6 @@ export default function Contact() {
               alt="Tidewater Fly Outfitters"
               className={styles.logoImg}
             />
-            {/* <div className={styles.logoLocation}>South Freeport · Maine</div> */}
           </div>
 
           {/* RATES */}
@@ -107,73 +121,7 @@ export default function Contact() {
 
       {/* ── CONTACT FORM — hidden for now, re-enable when ready ── */}
       {/* <section className={styles.formSection}>
-        <div className={styles.formInner}>
-          <h2 className={styles.formTitle}>Send a Message</h2>
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Name</label>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="First and last name"
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Email</label>
-                <input
-                  className={styles.input}
-                  type="email"
-                  placeholder="your@email.com"
-                  required
-                />
-              </div>
-            </div>
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Phone</label>
-                <input
-                  className={styles.input}
-                  type="tel"
-                  placeholder="(207) 000-0000"
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Trip Type</label>
-                <select className={styles.input}>
-                  <option value="">Select…</option>
-                  <option>Fly Fishing — {rate1Price} / {rate1Duration}</option>
-                  <option>Sightseeing — {rate2Price} / {rate2Duration}</option>
-                  <option>Other / Questions</option>
-                </select>
-              </div>
-            </div>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Preferred Dates</label>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="e.g. June 15–20, flexible"
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Message</label>
-              <textarea
-                className={styles.textarea}
-                placeholder="Experience level, group size, questions…"
-              />
-            </div>
-            <button type="submit" className={styles.submitBtn}>
-              Send Message
-            </button>
-            {submitted && (
-              <p className={styles.successMsg}>
-                Thank you — Rod will be in touch shortly!
-              </p>
-            )}
-          </form>
-        </div>
+        ...
       </section> */}
     </main>
   );

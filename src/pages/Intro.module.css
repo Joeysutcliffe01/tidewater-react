@@ -26,6 +26,7 @@
     z-index: 2;
     text-align: left;
     padding: 2rem;
+
 }
 
 .heroFishMark {
@@ -132,7 +133,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    height: 580px;
+    height: 480px;
     background-color: var(--navy);
 }
 
@@ -186,8 +187,85 @@
     font-family: Georgia, serif;
 }
 
+
+
+/* ── ABOUT NAVY BAND ── */
+.aboutNavy {
+    background: var(--navy);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative fly line SVG — bottom right corner, matching PDF */
+.flyLine {
+    position: absolute;
+    bottom: 0rem;
+    right: -5rem;
+    width: 700px;
+    height: auto;
+    opacity: 0.9;
+    pointer-events: none;
+    /* transform-origin: bottom right; */
+}
+
 /* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+
+    .fishPhoto {
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+    }
+
+
+}
+
 @media (max-width: 600px) {
+
+    .heroContent {
+        position: relative;
+        z-index: 2;
+        text-align: left;
+        padding: 2rem;
+
+    }
+
+    .heroFishMark {
+        position: absolute;
+        top: -170px;
+        right: -100px;
+        width: 420px;
+        height: auto;
+        pointer-events: none;
+    }
+
+    .heroBox {
+        position: relative;
+        padding: 1.5rem 2rem;
+        display: inline-block;
+        max-width: 500px;
+        text-align: center;
+        border: none;
+
+        /* Three sides only — no top-right corner */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        border-left: 1px solid rgba(255, 255, 255, 0.6);
+        border-right: 1px solid rgba(255, 255, 255, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+        /* Break the top-right corner with a gradient */
+        -webkit-mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 10px,
+                black 10px);
+        mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 30px,
+                black 60px);
+    }
+
     .photoPair {
         grid-template-columns: 1fr;
         height: auto;
@@ -200,28 +278,180 @@
     .heroQuote {
         font-size: 1.4rem;
     }
+
+
 }
 
-/* Add this to the .aboutNavy block — make it position: relative first */
+@media (max-width: 380px) {
 
-.aboutNavy {
-    background: var(--navy);
-    padding: 4rem 2rem;
-    text-align: center;
-    position: relative;
-    /* ← add this */
-    overflow: hidden;
-    /* ← add this so SVG clips at edge */
+    .heroContent {
+        position: relative;
+        z-index: 2;
+        text-align: left;
+        padding: 2rem;
+
+    }
+
+    .heroFishMark {
+        position: absolute;
+        top: -140px;
+        right: -100px;
+        width: 420px;
+        height: auto;
+        pointer-events: none;
+    }
+
+    .heroBox {
+        position: relative;
+        padding: 1.5rem 2rem;
+        display: inline-block;
+        max-width: 500px;
+        text-align: center;
+        border: none;
+
+        /* Three sides only — no top-right corner */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        border-left: 1px solid rgba(255, 255, 255, 0.6);
+        border-right: 1px solid rgba(255, 255, 255, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+        /* Break the top-right corner with a gradient */
+        -webkit-mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 10px,
+                black 10px);
+        mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 50px,
+                black 60px);
+    }
+
+    .photoPair {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .photoPairPlaceholder {
+        height: 260px;
+    }
+
+    .heroQuote {
+        font-size: 1.4rem;
+    }
+
+
 }
 
-/* Decorative fly line SVG — bottom right corner */
-.flyLine {
-    position: absolute;
-    bottom: -52rem;
-    right: -20rem;
-    width: 1500px;
-    height: auto;
-    opacity: 0.9;
-    pointer-events: none;
-    transform: scaleX(-1);
+@media (max-width: 600px) {
+
+    .heroContent {
+        position: relative;
+        z-index: 2;
+        text-align: left;
+        padding: 2rem;
+
+    }
+
+    .heroFishMark {
+        position: absolute;
+        top: -170px;
+        right: -100px;
+        width: 420px;
+        height: auto;
+        pointer-events: none;
+    }
+
+    .heroBox {
+        position: relative;
+        padding: 1.5rem 2rem;
+        display: inline-block;
+        max-width: 500px;
+        text-align: center;
+        border: none;
+
+        /* Three sides only — no top-right corner */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        border-left: 1px solid rgba(255, 255, 255, 0.6);
+        border-right: 1px solid rgba(255, 255, 255, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+        /* Break the top-right corner with a gradient */
+        -webkit-mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 10px,
+                black 10px);
+        mask-image: linear-gradient(to bottom left,
+                transparent 0px,
+                transparent 30px,
+                black 60px);
+    }
+
+    .photoPair {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .photoPairPlaceholder {
+        height: 260px;
+    }
+
+    .heroQuote {
+        font-size: 1.4rem;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+
+    .fishPhoto {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
+
+
+}
+
+@media (max-width: 1483px) {
+
+    /* Decorative fly line SVG — bottom right corner, matching PDF */
+    .flyLine {
+        position: absolute;
+        bottom: 0rem;
+        right: -10rem;
+        width: 700px;
+        height: auto;
+        opacity: 0.9;
+        pointer-events: none;
+        /* transform-origin: bottom right; */
+        /* border: 2px solid red; */
+    }
+
+}
+
+@media (max-width: 1265px) {
+
+    /* Decorative fly line SVG — bottom right corner, matching PDF */
+    .flyLine {
+        position: absolute;
+        bottom: 1.5rem;
+        right: -15rem;
+        width: 700px;
+        height: auto;
+        opacity: 0.9;
+        pointer-events: none;
+        /* transform-origin: bottom right; */
+        /* border: 2px solid red; */
+    }
+
+}
+
+@media (max-width: 1087px) {
+
+    /* Decorative fly line SVG — bottom right corner, matching PDF */
+    .flyLine {
+        display: none;
+    }
+
 }

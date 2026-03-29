@@ -1,6 +1,6 @@
 import { useSite } from "../context/SiteContext";
 import styles from "./Fishing.module.css";
-import flyLine from "../assets/svg/TIDE-001 TIDEWATER LOGO Line only  (1).svg";
+import flyLine from "../assets/svg/fishline-hero.svg";
 
 export default function Fishing() {
   const { settings } = useSite();

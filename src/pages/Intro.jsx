@@ -1,6 +1,6 @@
 import { useSite } from "../context/SiteContext";
 import styles from "./Intro.module.css";
-import flyLine from "../assets/svg/TIDE-001 TIDEWATER LOGO Line only  (1).svg";
+import flyLine from "../assets/svg/fishline-hero.svg";
 import fishMark from "../assets/svg/TIDE-001 TIDEWATER LOGO Reverse NO TYPE  (1).svg";
 
 export default function Intro() {

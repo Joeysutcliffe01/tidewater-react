@@ -22,7 +22,7 @@ export default function Gallery() {
 
   const galleryHero = settings.images?.galleryHero ?? {
     url: "",
-    position: "center",
+    position: "center right",
     brightness: 0.55,
   };
 
@@ -30,7 +30,7 @@ export default function Gallery() {
     const key = `galleryPhoto${i + 1}`;
     const photo = settings.images?.[key] ?? {
       url: "",
-      position: "center",
+      position: "center right", // ← was "center"
       brightness: 1,
     };
     return { key, label, photo };
@@ -120,10 +120,11 @@ export default function Gallery() {
       <section className={styles.grid}>
         {photos.map(({ key, label, photo }) => {
           const visIdx = visiblePhotos.findIndex((p) => p.key === key);
+
           const cellStyle = {
             backgroundImage: photo.url ? `url('${photo.url}')` : "none",
             backgroundSize: "cover",
-            backgroundPosition: photo.position,
+            backgroundPosition: "center right", // ← hardcoded; ignores stale SiteContext value
             backgroundRepeat: "no-repeat",
             filter: `brightness(${photo.brightness})`,
             cursor: photo.url ? "pointer" : "default",

@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     /* removed overflow: hidden */
 }
 
@@ -28,18 +29,20 @@
 .heroBoxWrap {
     position: relative;
     display: inline-block;
+    overflow: visible;
+    /* border: 2px solid red; */
 }
 
 .flyLine {
     position: absolute;
-    top: -71px;
-    left: 55%;
-    transform: translateX(-60%) scaleX(-1);
-    width: 1250px;
+    top: 10.5rem;
+    left: 60%;
+    width: 690px;
     height: auto;
-    opacity: 0.9;
+    transform: translateX(-50%);
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
+    opacity: 0.9;
 }
 
 .heroBox {
@@ -141,8 +144,40 @@
     text-transform: uppercase;
 }
 
+
+
 /* ── RESPONSIVE ── */
-@media (max-width: 700px) {
+@media (max-width: 1526px) {
+    .flyLine {
+        position: absolute;
+        top: 11rem;
+        left: 63%;
+        width: 600px;
+        height: auto;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.9;
+        /* border: 2px solid red; */
+    }
+}
+
+@media (max-width: 1000px) {
+    .flyLine {
+        position: absolute;
+        top: 11.7rem;
+        left: 61%;
+        width: 520px;
+        height: auto;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.9;
+        /* border: 2px solid red; */
+    }
+}
+
+@media (max-width: 760px) {
     .photoGrid {
         grid-template-columns: 1fr;
     }
@@ -153,5 +188,11 @@
 
     .fullPhoto {
         height: 320px;
+    }
+}
+
+@media (max-width: 644px) {
+    .flyLine {
+        display: none;
     }
 }

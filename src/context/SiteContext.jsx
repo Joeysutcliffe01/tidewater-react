@@ -35,7 +35,7 @@ const defaultSettings = {
     },
     fishPhoto: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774181698/Husky_Striper_on_Green_Crab_Fly_f6ywde.png",
-      position: "center",
+      position: "right center",
       brightness: 1,
     },
     fishingPhoto1: {
@@ -65,7 +65,7 @@ const defaultSettings = {
     },
     boatPhoto: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774182806/IMG_3798_1_xqvnhe.jpg",
-      position: "center",
+      position: "30% center",
       brightness: 1,
     },
     sightseeingPhoto1: {

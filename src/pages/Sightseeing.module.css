@@ -123,4 +123,14 @@
     .fullPhoto {
         height: 280px;
     }
+
+    .heroTitle {
+        font-size: 3rem;
+    }
+
+    .heroBox {
+
+        padding: 1.5rem 2.5rem;
+
+    }
 }
