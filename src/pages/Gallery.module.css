@@ -239,6 +239,9 @@
     pointer-events: none;
     white-space: nowrap;
     z-index: 1001;
+    text-wrap: wrap;
+    min-width: 100%;
+    text-align: center;
 }
 
 /* ── RESPONSIVE ── */
