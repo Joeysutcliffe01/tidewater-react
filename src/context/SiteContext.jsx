@@ -105,12 +105,12 @@ const defaultSettings = {
     },
     galleryPhoto4: {
       url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774428104/Go_Get_Bigger_1_saw6yx.jpg",
-      position: "center",
+      position: "center right",
       brightness: 1,
     },
     galleryPhoto5: {
-      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774427953/Rocky_Coast_of_Maine_1_gnslh0.jpg",
-      position: "center",
+      url: "https://res.cloudinary.com/dfujw9ted/image/upload/v1774943760/Entrance_to_South_Freeport_Harbor_Gull_Guarded_m4gupf.jpg",
+      position: "center left",
       brightness: 1,
     },
     galleryPhoto6: {
@@ -153,13 +153,25 @@ const defaultSettings = {
     rate1Duration: "4 Hours",
     rate2Price: "$300",
     rate2Duration: "3 Hours",
+    galleryCaption1: "A fly rod pointing in the preferred direction. Fish on!",
+    galleryCaption2:
+      "A chartreuse fly is always good, but sometimes yellow is better.",
+    galleryCaption3:
+      "A setting sun on another glorious summer night on Casco Bay.",
+    galleryCaption4: "A schoolie striper brought to hand. Go get bigger!",
+    galleryCaption5: "Gull guard the entrance to the Harraseeket River.",
+    galleryCaption6:
+      "Pound of Tea Island marks the entrance to South Freeport Harbor.",
+    galleryCaption7:
+      "Crab Island Ledge. Stripers can lurk here in the swirling tidal currents.",
+    galleryCaption8: "Look close to see the Bald Eagle in the tree.",
+    galleryCaption9: "A deer swimming from Wolfe's Neck to Crab Island.",
   },
 };
 
 const SiteContext = createContext(null);
 
 export function SiteProvider({ children }) {
-  // Clear localStorage on every load — temporary until MERN backend is ready
   try {
     localStorage.removeItem("tw_settings");
   } catch {}

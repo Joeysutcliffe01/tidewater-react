@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useSite } from "../../context/SiteContext";
 import styles from "./EditorPanel.module.css";
 
-const positions = ["top", "center", "bottom", "left", "right"];
-
 function Section({ title, children }) {
   const [open, setOpen] = useState(false);
   return (
@@ -51,6 +49,14 @@ function ImageFields({ imageKey }) {
   const { settings, updateImage } = useSite();
   const img = settings.images[imageKey];
 
+  const hPos = img.position.includes("left")
+    ? "left"
+    : img.position.includes("right")
+      ? "right"
+      : "center";
+
+  const setHPos = (h) => updateImage(imageKey, "position", `${h} center`);
+
   return (
     <>
       <Field label="Image URL (from Cloudinary)">
@@ -59,18 +65,22 @@ function ImageFields({ imageKey }) {
           onChange={(v) => updateImage(imageKey, "url", v)}
         />
       </Field>
-      <Field label="Position">
-        <select
-          className={styles.input}
-          value={img.position}
-          onChange={(e) => updateImage(imageKey, "position", e.target.value)}
-        >
-          {positions.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
+      <Field label="Focus">
+        <div className={styles.layoutBtns}>
+          {["left", "center", "right"].map((h) => (
+            <button
+              key={h}
+              className={
+                hPos === h
+                  ? `${styles.layoutBtn} ${styles.layoutActive}`
+                  : styles.layoutBtn
+              }
+              onClick={() => setHPos(h)}
+            >
+              {h.charAt(0).toUpperCase() + h.slice(1)}
+            </button>
           ))}
-        </select>
+        </div>
       </Field>
       <Field label={`Brightness: ${img.brightness}`}>
         <input
@@ -109,7 +119,6 @@ export default function EditorPanel({ onClose }) {
 
   return (
     <div className={styles.panel}>
-      {/* HEADER */}
       <div className={styles.header}>
         <span className={styles.headerTitle}>Site Editor</span>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
@@ -149,7 +158,6 @@ export default function EditorPanel({ onClose }) {
               </button>
             </div>
           </Field>
-
           <Field label="Footer Layout">
             <div className={styles.layoutBtns}>
               <button
@@ -176,7 +184,6 @@ export default function EditorPanel({ onClose }) {
               </button>
             </div>
           </Field>
-
           <Field label="Navy Color">
             <div className={styles.colorRow}>
               <input
@@ -188,7 +195,6 @@ export default function EditorPanel({ onClose }) {
               <span className={styles.colorVal}>{colors.navy}</span>
             </div>
           </Field>
-
           <Field label="Gold Color">
             <div className={styles.colorRow}>
               <input
@@ -272,6 +278,18 @@ export default function EditorPanel({ onClose }) {
         <Section title="🖼 Gallery Page">
           <p className={styles.sectionNote}>Hero Image</p>
           <ImageFields imageKey="galleryHero" />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+            <div key={n}>
+              <p className={styles.sectionNote}>Photo {n}</p>
+              <ImageFields imageKey={`galleryPhoto${n}`} />
+              <Field label="Caption">
+                <TextInput
+                  value={content[`galleryCaption${n}`] ?? ""}
+                  onChange={(v) => updateContent(`galleryCaption${n}`, v)}
+                />
+              </Field>
+            </div>
+          ))}
         </Section>
 
         {/* ── CONTACT PAGE ── */}

@@ -2,22 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Gallery.module.css";
 
-const PHOTO_LABELS = [
-  "Bent rod, fish on",
-  "Fish and yellow fly",
-  "On the water",
-  "Go get bigger",
-  "Rocky coast of Maine",
-  "Pound of Tea Island",
-  "Crab Island Ledge",
-  "Dawn on the bay",
-  "Deer swimming between islands",
-];
-
 export default function Gallery() {
   const { settings } = useSite();
-  const [lightboxIdx, setLightboxIdx] = useState(null); // null = closed
-  const [animDir, setAnimDir] = useState(null); // 'left' | 'right' | null
+  const [lightboxIdx, setLightboxIdx] = useState(null);
+  const [prevIdx, setPrevIdx] = useState(null);
+  const [animDir, setAnimDir] = useState(null);
   const [animating, setAnimating] = useState(false);
 
   const galleryHero = settings.images?.galleryHero ?? {
@@ -26,17 +15,19 @@ export default function Gallery() {
     brightness: 0.55,
   };
 
-  const photos = PHOTO_LABELS.map((label, i) => {
-    const key = `galleryPhoto${i + 1}`;
+  // Build photos array from SiteContext — captions editable via admin
+  const photos = Array.from({ length: 9 }, (_, i) => {
+    const n = i + 1;
+    const key = `galleryPhoto${n}`;
     const photo = settings.images?.[key] ?? {
       url: "",
-      position: "center right", // ← was "center"
+      position: "center",
       brightness: 1,
     };
+    const label = settings.content?.[`galleryCaption${n}`] ?? `Photo ${n}`;
     return { key, label, photo };
   });
 
-  // Only photos with a URL participate in the lightbox
   const visiblePhotos = photos.filter((p) => p.photo.url);
 
   // ── Lightbox navigation ──────────────────────────────────────────────
@@ -45,23 +36,24 @@ export default function Gallery() {
       if (animating || lightboxIdx === null) return;
       const next =
         (lightboxIdx + dir + visiblePhotos.length) % visiblePhotos.length;
-      setAnimDir(dir === 1 ? "left" : "right");
-      setAnimating(true);
-      setTimeout(() => {
-        setLightboxIdx(next);
-        setAnimDir(null);
-        setAnimating(false);
-      }, 320);
+      setLightboxIdx(next);
+      setPrevIdx(null);
+      setAnimDir(null);
+      setAnimating(false);
     },
     [animating, lightboxIdx, visiblePhotos.length],
   );
 
   const openLightbox = (idx) => {
     setLightboxIdx(idx);
+    setPrevIdx(null);
     setAnimDir(null);
   };
-
-  const closeLightbox = () => setLightboxIdx(null);
+  const closeLightbox = () => {
+    setLightboxIdx(null);
+    setPrevIdx(null);
+    setAnimDir(null);
+  };
 
   // Keyboard nav
   useEffect(() => {
@@ -75,7 +67,7 @@ export default function Gallery() {
     return () => window.removeEventListener("keydown", onKey);
   }, [lightboxIdx, navigate]);
 
-  // Lock body scroll when lightbox is open
+  // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = lightboxIdx !== null ? "hidden" : "";
     return () => {
@@ -83,7 +75,6 @@ export default function Gallery() {
     };
   }, [lightboxIdx]);
 
-  // ── Derived styles ───────────────────────────────────────────────────
   const heroBgStyle = {
     position: "absolute",
     inset: 0,
@@ -95,11 +86,20 @@ export default function Gallery() {
   };
 
   const currentPhoto = lightboxIdx !== null ? visiblePhotos[lightboxIdx] : null;
+  const prevPhoto = prevIdx !== null ? visiblePhotos[prevIdx] : null;
 
-  const lbImgClass = [
+  const inClass = [
     styles.lbImg,
-    animDir === "left" ? styles.lbSlideLeft : "",
-    animDir === "right" ? styles.lbSlideRight : "",
+    animDir === "left" ? styles.lbSlideInLeft : "",
+    animDir === "right" ? styles.lbSlideInRight : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const outClass = [
+    styles.lbImg,
+    styles.lbOut,
+    animDir === "left" ? styles.lbSlideOutLeft : "",
+    animDir === "right" ? styles.lbSlideOutRight : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -120,11 +120,10 @@ export default function Gallery() {
       <section className={styles.grid}>
         {photos.map(({ key, label, photo }) => {
           const visIdx = visiblePhotos.findIndex((p) => p.key === key);
-
           const cellStyle = {
             backgroundImage: photo.url ? `url('${photo.url}')` : "none",
             backgroundSize: "cover",
-            backgroundPosition: "center right", // ← hardcoded; ignores stale SiteContext value
+            backgroundPosition: photo.position,
             backgroundRepeat: "no-repeat",
             filter: `brightness(${photo.brightness})`,
             cursor: photo.url ? "pointer" : "default",
@@ -161,7 +160,6 @@ export default function Gallery() {
           role="dialog"
           aria-modal="true"
         >
-          {/* Close */}
           <button
             className={styles.lbClose}
             onClick={closeLightbox}
@@ -170,12 +168,10 @@ export default function Gallery() {
             ✕
           </button>
 
-          {/* Counter */}
           <div className={styles.lbCounter}>
             {lightboxIdx + 1} / {visiblePhotos.length}
           </div>
 
-          {/* Prev arrow */}
           <button
             className={`${styles.lbArrow} ${styles.lbPrev}`}
             onClick={(e) => {
@@ -187,21 +183,28 @@ export default function Gallery() {
             ‹
           </button>
 
-          {/* Image — key prop forces remount so animation re-fires each slide */}
           <div
             className={styles.lbImgWrap}
             onClick={(e) => e.stopPropagation()}
           >
+            {prevPhoto && (
+              <img
+                key={`out-${prevIdx}`}
+                className={outClass}
+                src={prevPhoto.photo.url}
+                alt=""
+                draggable={false}
+              />
+            )}
             <img
-              key={currentPhoto.key}
-              className={lbImgClass}
+              key={`in-${lightboxIdx}`}
+              className={inClass}
               src={currentPhoto.photo.url}
               alt={currentPhoto.label}
               draggable={false}
             />
           </div>
 
-          {/* Next arrow */}
           <button
             className={`${styles.lbArrow} ${styles.lbNext}`}
             onClick={(e) => {
@@ -213,7 +216,6 @@ export default function Gallery() {
             ›
           </button>
 
-          {/* Caption */}
           <p className={styles.lbCaption}>{currentPhoto.label}</p>
         </div>
       )}
