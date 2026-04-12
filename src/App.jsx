@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import AdminLogin from "./components/admin/AdminLogin";
 import EditorPanel from "./components/admin/EditorPanel";
 import EditorToggle from "./components/admin/EditorToggle";
+import ScrollToTop from "./components/ScrollToTop";
 import Intro from "./pages/Intro";
 import Fishing from "./pages/Fishing";
 import Sightseeing from "./pages/Sightseeing";
@@ -39,6 +40,7 @@ function AppInner() {
   return (
     <>
       <Nav />
+      <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Intro />} />
