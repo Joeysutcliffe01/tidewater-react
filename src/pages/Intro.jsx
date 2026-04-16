@@ -43,17 +43,14 @@ export default function Intro() {
       <section className={styles.band}>
         <p className={styles.bandText}>
           It’s the oversized tail of the striped bass that gives the fish its
-          rod-bending power.
-        </p>
-        <p className={styles.bandText}>
-          Even a “schoolie” striper can turn a drifting boat 90 degrees: bigger
+          rod-bending power. 
+                    Even a “schoolie” striper can turn a drifting boat 90 degrees: bigger
           fish will “pull” it outright.” A striper’s take – whether on the
           surface or
-        </p>
-        <p className={styles.bandText}>
           deep – is aggressive and unmistakable. There’s never a doubt when
           you’re tight with a striped bass.
         </p>
+
       </section>
 
       {/* ── FULL WIDTH FISH PHOTO ── */}

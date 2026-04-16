@@ -455,3 +455,13 @@
     }
 
 }
+
+
+
+
+@media (max-width: 600px) {
+    .heroBg {
+        background-size: auto !important;
+        background-position: left top !important;
+    }
+}

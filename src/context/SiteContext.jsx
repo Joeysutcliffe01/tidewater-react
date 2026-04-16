@@ -159,7 +159,7 @@ const defaultSettings = {
     galleryCaption3:
       "A setting sun on another glorious summer night on Casco Bay.",
     galleryCaption4: "A schoolie striper brought to hand. Go get bigger!",
-    galleryCaption5: "Gull guard the entrance to the Harraseeket River.",
+    galleryCaption5: "Red buoy and gull guard the entrance to the Harraseeket River.",
     galleryCaption6:
       "Pound of Tea Island marks the entrance to South Freeport Harbor.",
     galleryCaption7:
