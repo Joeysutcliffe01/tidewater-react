@@ -54,12 +54,19 @@ export default function Fishing() {
         </div>
       </section>
 
-      {/* ── LIGHT BAND ── */}
-      <section className={styles.band}>
+      {/* ── LIGHT BAND — DESKTOP ── */}
+      <section className={`${styles.band} desktopOnly`}>
         <p className={styles.bandText}>
-          We depart at early dawn from Strouts Point Wharf Company. Depending on
-          that day's tide, we may begin fishing in South Freeport Harbor….then
-          move to proven spots around the bay.
+          We depart at early dawn from Strouts Point Wharf Company. Depending on that day's tide, we may begin fishing in
+          <br />
+          South Freeport Harbor….then move to proven spots around the bay.
+        </p>
+      </section>
+
+      {/* ── LIGHT BAND — MOBILE ── */}
+      <section className={`${styles.band} mobileOnly`}>
+        <p className={styles.bandText}>
+          We depart at early dawn from Strouts Point Wharf Company. Depending on that day's tide, we may begin fishing in South Freeport Harbor… then move to proven spots around the bay.
         </p>
       </section>
 
@@ -76,21 +83,29 @@ export default function Fishing() {
         </div>
       </section>
 
-      {/* ── BODY TEXT ── */}
-      <section className={styles.body}>
+      {/* ── BODY TEXT — DESKTOP ── */}
+      <section className={`${styles.body} desktopOnly`}>
         <p className={styles.bodyText}>
-          We fish locally made Maine Fly Company rods (8–10 weight) paired with
-          Orvis reels, rigged with fresh leaders and a variety of lines. Flies
-          are locally tied. You're welcome to bring your own saltwater fly gear.
+          We fish locally made Maine Fly Company rods (8–10 weight) paired with Orvis reels, rigged with fresh leaders and a variety of lines.
+          <br /><br />
+          Flies are locally tied. You're welcome to bring your own saltwater fly gear.
+          <br /><br />
+          We are strictly catch-and-release, pinch our barbs, and keep fish wet whenever possible to minimize impact.
+          <br /><br />
+          The boat accommodates up to three anglers – fishing from the bow, stern and one waiting on deck. We welcome all experience levels.
+          <br /><br />
+          While the focus is on catching fish, every trip is low-pressure and fun.
         </p>
+      </section>
+
+      {/* ── BODY TEXT — MOBILE ── */}
+      <section className={`${styles.body} mobileOnly`}>
         <p className={styles.bodyText}>
-          We are strictly catch-and-release, pinch our barbs, and keep fish wet
-          whenever possible to minimize impact.
-        </p>
-        <p className={styles.bodyText}>
-          The boat accommodates up to three anglers — fishing from the bow,
-          stern and one waiting on deck. We welcome all experience levels. While
-          the focus is on catching fish, every trip is low-pressure and fun.
+          We fish locally made Maine Fly Company rods (8–10 weight) paired with Orvis reels, rigged with fresh leaders and a variety of lines. Flies are locally tied. You're welcome to bring your own saltwater fly gear.
+          <br /><br />
+          We are strictly catch-and-release, pinch our barbs, and keep fish wet whenever possible to minimize impact.
+          <br /><br />
+          The boat accommodates up to three anglers – fishing from the bow, stern and one waiting on deck. We welcome all experience levels. While the focus is on catching fish, every trip is low-pressure and fun.
         </p>
       </section>
 

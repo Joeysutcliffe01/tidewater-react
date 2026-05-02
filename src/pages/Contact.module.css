@@ -262,6 +262,23 @@
         width: 100%;
         text-align: center;
     }
+
+    .contactText, .rateNote {
+        line-height: 2;
+    }
+
+
+    .rateNote {
+       padding-top: 1.5rem;
+    }
+
+    .contactDetail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 1rem;
+    }
 }
 
 @media (max-width: 700px) {

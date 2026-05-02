@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSite } from "../context/SiteContext";
 import styles from "./Contact.module.css";
-import logoFull from "../assets/svg/TIDE-001-TIDEWATER-LOGO.png";
+import logoFull from "../assets/svg/TIDEWATER-LOGO-NURO-FONT .png";
 
 export default function Contact() {
   const { settings } = useSite();

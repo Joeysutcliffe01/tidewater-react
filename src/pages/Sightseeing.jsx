@@ -61,23 +61,23 @@ export default function Sightseeing() {
         </div>
       </section>
 
-      {/* ── LIGHT BAND ── */}
-      <section className={styles.band}>
+      {/* ── LIGHT BAND — DESKTOP ── */}
+      <section className={`${styles.band} desktopOnly`}>
         <p className={styles.bandText}>
-          Not everyone fly fishes — and that’s perfectly fine. Join us for a few
-          hours on the water to experience the beauty
+          Not everyone fly fishes — and that's perfectly fine. Join us for a few hours on the water to experience the beauty
+          <br /><br />
+          of Casco Bay. Bring your camera or sketch pad. You may see ospreys, bald eagles, seals, great blue herons,
+          <br /><br />
+          and countless shorebirds. The rugged shoreline and protective islands — some inhabited, some wild and rock-bound —
+          <br /><br />
+          are rich with history and character. Let Captain Lane be your local guide.
         </p>
+      </section>
+
+      {/* ── LIGHT BAND — MOBILE ── */}
+      <section className={`${styles.band} mobileOnly`}>
         <p className={styles.bandText}>
-          of Casco Bay. Bring your camera or sketch pad. You may see ospreys,
-          bald eagles, seals, great blue herons,
-        </p>
-        <p className={styles.bandText}>
-          and countless shorebirds. The rugged shoreline and protective islands
-          — some inhabited, some wild and rock-bound —
-        </p>
-        <p className={styles.bandText}>
-          are rich with history and character. Let Captain Lane be your local
-          guide.
+          Not everyone fly fishes — and that's perfectly fine. Join us for a few hours on the water to experience the beauty of Casco Bay. <br /><br />Bring your camera or sketch pad. You may see ospreys, bald eagles, seals, great blue herons, and countless shorebirds. <br /><br />The rugged shoreline and protective islands — some inhabited, some wild and rock-bound — are rich with history and character. Let Captain Lane be your local guide.
         </p>
       </section>
 

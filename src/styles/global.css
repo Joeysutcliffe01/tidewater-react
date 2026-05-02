@@ -48,3 +48,18 @@ img {
     max-width: 100%;
     display: block;
 }
+
+/* Intro.module.css */
+.mobileOnly {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .desktopOnly {
+        display: none;
+    }
+
+    .mobileOnly {
+        display: block;
+    }
+}
